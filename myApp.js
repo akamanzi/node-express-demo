@@ -7,6 +7,10 @@ console.log("Hello World");
 // })
 let filePath = __dirname+"/views/index.html";
 let staticPath = __dirname+'/public';
+app.use(function(req, res, next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`)
+  next();
+})
 app.use('/public', express.static(staticPath));
 app.get("/", function(req, res) {
   res.sendFile(filePath);
