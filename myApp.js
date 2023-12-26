@@ -1,4 +1,5 @@
 require('dotenv').config()
+const bodyParser = require('body-parser');
 let express = require('express');
 let app = express();
 console.log("Hello World");
@@ -41,6 +42,7 @@ app.get('/:word/echo', function(req, res) {
     "echo": req.params.word
   })
 })
+app.use('/name', bodyParser.urlencoded({extended: false}))
 app.route('/name')
 .get(function(req, res) {
   let fullName = req.query.first + ' '+req.query.last
@@ -50,8 +52,7 @@ app.route('/name')
     }
   )
 })
-.post(function(req, req) {
-  
+.post(function(req, res) {
 })
 
 
