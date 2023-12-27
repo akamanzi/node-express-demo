@@ -53,6 +53,12 @@ app.route('/name')
   )
 })
 .post(function(req, res) {
+  let fullName = req.body.first + ' '+req.body.last
+  res.json(
+    {
+      "name": fullName
+    }
+  )
 })
 
 
